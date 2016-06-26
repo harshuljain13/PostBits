@@ -1,10 +1,8 @@
 __author__ = 'h_hack'
 
-
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 import facebook
 import requests
+
 
 def fbwallpost(PageAccessToken, PageName, TextMessage, ImagePath, LinkPath):
     perm_access_token= PageAccessToken
@@ -13,27 +11,24 @@ def fbwallpost(PageAccessToken, PageName, TextMessage, ImagePath, LinkPath):
     graph = facebook.GraphAPI(access_token=perm_access_token, version='2.2')
 
     attachment = {
-        'name': 'Quotemykaam',
         'link': LinkPath,
         'picture': ImagePath
     }
-    x = graph.put_wall_post( message=TextMessage, attachment= attachment)
-    return x
+    PostId = graph.put_wall_post( message=TextMessage, attachment= attachment)
+    print PostId
 
-def grouppost(UserAccessToken, GroupId, TextMessage, ImagePath, LinkPath):
 
-    x = requests.post('https://graph.facebook.com/v2.6/'+GroupId+'/feed',
+def grouppost(UserAccessToken, GroupIds, TextMessage, ImagePath, LinkPath):
+
+    for GroupId in GroupIds:
+        x = requests.post('https://graph.facebook.com/v2.6/'+GroupId+'/feed',
                       params= {'access_token': UserAccessToken, 'message': TextMessage,
                                 'picture': ImagePath,
                                 'link': LinkPath})
-
-    #x = requests.post('https://graph.facebook.com/v2.6/1687433408198647/feed', params= {'access_token': UserAccessToken,
-    #                                                                              'message': msg})
-
-    return x
+        print GroupId + ' ' + x
 
 
-
+"""
 def sharefb(myusername, mypassword, PostId, FilePath):
     driver = webdriver.Firefox()
     driver.get('https://www.facebook.com/')
@@ -51,6 +46,7 @@ def sharefb(myusername, mypassword, PostId, FilePath):
 
     input_file = driver.find_element_by_xpath("//input[@type='file']")
     input_file.send_keys('/home/h_hack/work/PostBits/src/222.jpg/')
+    """
 
 
 

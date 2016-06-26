@@ -1,23 +1,28 @@
-from fbpost import fbwallpost, sharefb, grouppost
+#!/usr/bin/env python
+from fbpost import fbwallpost, grouppost
 from config import perm_Acc_token_fb, PageName, usr_access_token
+from firebasepy import FirebaseGet,FirebasePost
 
 def main():
-    TextMessage = 'You can never be too old to have balloons at your birthday party!' \
-                  'Hire the best balloon decorators in Delhi-Ncr and have the craziest birthday party.'
+    """
+    #GroupId = '1687433408198647'
+    GroupIds = ['1066160280093643']
+    """
+    MasterJson = FirebaseGet()
+    JSONKeys = MasterJson.keys()
+    for JSONKey in JSONKeys:
+        OneJSON = MasterJson[JSONKey]
+        TextMessage = OneJSON['TextMessage']
+        ImagePath = OneJSON['ImagePath']
+        LinkPath = OneJSON['LinkPath']
+        GroupIds = OneJSON['GroupIds']
+        print TextMessage
+        print ImagePath
+        print LinkPath
+        print GroupIds
 
-    ImagePath = 'https://fbcdn-photos-c-a.akamaihd.net/hphotos-ak-xla1/v/t1.0-0/p480x480/13233083_928046943971926_2544' \
-                '900988046449714_n.jpg?oh=12d928cb49ef28b1efdfde8559ba9d4b&oe=57C1244C&__gda__=1472611472_281d37b8ac' \
-                '37a32fb70f7b6771a24cbc'
-
-    LinkPath = 'https://www.quotemykaam.com/#!service/balloon-decorators'
-
-    GroupId = '1687433408198647'
-
-    x = fbwallpost(perm_Acc_token_fb, PageName, TextMessage, ImagePath, LinkPath)
-    print x
-
-    return_code = grouppost(usr_access_token,GroupId , TextMessage, ImagePath, LinkPath)
-    print return_code
+        fbwallpost(perm_Acc_token_fb, PageName, TextMessage, ImagePath, LinkPath)
+        grouppost(usr_access_token, GroupIds, TextMessage, ImagePath, LinkPath)
 
 if __name__ == '__main__':
     main()
