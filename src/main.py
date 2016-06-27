@@ -24,7 +24,7 @@ def main():
 
         #fbwallpost(perm_Acc_token_fb, PageName, TextMessage, ImagePath, LinkPath)
         if Days>0:
-            #grouppost(usr_access_token, GroupIds, TextMessage, ImagePath, LinkPath, Days,Name)
+            grouppost(usr_access_token, GroupIds, TextMessage, ImagePath, LinkPath, Days,Name)
             #decrement Days
             Days-=1
             OneJSON['Days'] = Days
