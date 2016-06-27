@@ -23,3 +23,7 @@ def FirebaseGet():
     myfirebase = firebase.FirebaseApplication(FirebaseURL)
     data = myfirebase.get('/data', None, params={'print': 'pretty'})
     return data
+
+def FirebaseDelete(JsonKey):
+    myfirebase = firebase.FirebaseApplication(FirebaseURL)
+    myfirebase.delete('/data',JsonKey)
