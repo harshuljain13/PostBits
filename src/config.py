@@ -8,3 +8,5 @@ usr_access_token = 'EAAENKrfV3fIBAAZA2QDku4kYe05zX60c1CHy8C46224AqCPWOAUbWZCdwqW
 PageName = 'joinsvf'
 
 FirebaseURL = 'https://postbits.firebaseio.com/'
+
+GroupsDict = {'halctest': '1066160280093643'}

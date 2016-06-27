@@ -15,6 +15,9 @@ def FirebasePost(data):
     myfirebase = firebase.FirebaseApplication(FirebaseURL)
     myfirebase.post('/data', data=data, params={'print': 'pretty'})
 
+def FirebasePut(data,name):
+    myfirebase = firebase.FirebaseApplication(FirebaseURL)
+    myfirebase.put('/data',name=name, data=data, params={'print': 'pretty'})
 
 def FirebaseGet():
     myfirebase = firebase.FirebaseApplication(FirebaseURL)
