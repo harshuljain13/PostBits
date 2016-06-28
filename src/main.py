@@ -39,7 +39,7 @@ def main():
 
                 """checking the Days. if 0 then delete the JSON else publish it."""
                 if Days>0:
-                    #grouppost(usr_access_token, GroupIds, TextMessage, ImagePath, LinkPath, Days,Name)
+                    grouppost(usr_access_token, GroupIds, TextMessage, ImagePath, LinkPath, Days,Name)
                     #decrement Days
 
                     Days-=1
