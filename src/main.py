@@ -42,9 +42,9 @@ def main():
                     grouppost(usr_access_token, GroupIds, TextMessage, ImagePath, LinkPath, Days,Name)
                     #decrement Days
 
-                    #Days-=1
-                    #OneJSON['Days'] = Days
-                    #FirebasePut(OneJSON, JSONKey)
+                    Days-=1
+                    OneJSON['Days'] = Days
+                    FirebasePut(OneJSON, JSONKey)
                 if Days == 0:
                     FirebaseDelete(JSONKey)
             else:
