@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 from fbpost import fbwallpost, grouppost
 from config import perm_Acc_token_fb, PageName, usr_access_token
 from firebasepy import FirebaseGet,FirebasePost,FirebasePut,FirebaseDelete
@@ -38,13 +38,13 @@ def main():
                 #fbwallpost(perm_Acc_token_fb, PageName, TextMessage, ImagePath, LinkPath)
 
                 """checking the Days. if 0 then delete the JSON else publish it."""
-                if Days>0:
+                if Days > 0:
                     grouppost(usr_access_token, GroupIds, TextMessage, ImagePath, LinkPath, Days,Name)
                     #decrement Days
 
-                    Days-=1
-                    OneJSON['Days'] = Days
-                    FirebasePut(OneJSON, JSONKey)
+                    #Days-=1
+                    #OneJSON['Days'] = Days
+                    #FirebasePut(OneJSON, JSONKey)
                 if Days == 0:
                     FirebaseDelete(JSONKey)
             else:
