@@ -2,7 +2,6 @@ __author__ = 'h_hack'
 
 import facebook
 import requests
-from config import GroupsDict
 
 def fbwallpost(PageAccessToken, PageName, TextMessage, ImagePath, LinkPath):
     perm_access_token= PageAccessToken
@@ -21,12 +20,12 @@ def fbwallpost(PageAccessToken, PageName, TextMessage, ImagePath, LinkPath):
 def grouppost(UserAccessToken, GroupIds, TextMessage, ImagePath, LinkPath,Days, Name):
 
     for GroupId in GroupIds:
-        x = requests.post('https://graph.facebook.com/v2.6/'+GroupsDict[GroupId]+'/feed',
+        x = requests.post('https://graph.facebook.com/v2.6/'+GroupId+'/feed',
                       params= {'access_token': UserAccessToken, 'message': TextMessage,
                                 'picture': ImagePath,
                                 'link': LinkPath,
                                'name': Name})
-        print Name + ' ' + GroupsDict[GroupId] + ' ' + str(x) + ' will run ' + str(Days) + ' more days'
+        print Name + ' ' + GroupId + ' ' + str(x) + ' will run ' + str(Days) + ' more days'
 
 
 """
